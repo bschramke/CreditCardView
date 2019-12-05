@@ -46,22 +46,10 @@ import android.widget.TextView;
 
 import com.vinaygaba.creditcardview.util.AndroidUtils;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
 import java.util.regex.Pattern;
 
-import static com.vinaygaba.creditcardview.CardNumberFormat.ALL_DIGITS;
-import static com.vinaygaba.creditcardview.CardNumberFormat.MASKED_ALL;
-import static com.vinaygaba.creditcardview.CardNumberFormat.MASKED_ALL_BUT_LAST_FOUR;
-import static com.vinaygaba.creditcardview.CardNumberFormat.ONLY_LAST_FOUR;
-import static com.vinaygaba.creditcardview.CardType.AMERICAN_EXPRESS;
-import static com.vinaygaba.creditcardview.CardType.AUTO;
-import static com.vinaygaba.creditcardview.CardType.DISCOVER;
-import static com.vinaygaba.creditcardview.CardType.MASTERCARD;
-import static com.vinaygaba.creditcardview.CardType.PATTERN_AMERICAN_EXPRESS;
-import static com.vinaygaba.creditcardview.CardType.PATTERN_DISCOVER;
-import static com.vinaygaba.creditcardview.CardType.PATTERN_MASTER_CARD;
-import static com.vinaygaba.creditcardview.CardType.VISA;
+import static com.vinaygaba.creditcardview.CardNumberFormat.*;
+import static com.vinaygaba.creditcardview.CardType.*;
 
 @SuppressLint("DefaultLocale")
 public class CreditCardView extends RelativeLayout {
@@ -76,7 +64,7 @@ public class CreditCardView extends RelativeLayout {
     private String mCvv;
     private String mFontPath;
     private int mCardNumberTextColor = Color.WHITE;
-    private int mCardNumberFormat = ALL_DIGITS;
+    private int mCardNumberFormat = CardNumberFormat.ALL_DIGITS;
     private int mCardNameTextColor = Color.WHITE;
     private int mExpiryDateTextColor = Color.WHITE;
     private int mCvvTextColor = Color.BLACK;
@@ -849,11 +837,11 @@ public class CreditCardView extends RelativeLayout {
         if (!TextUtils.isEmpty(mCardNumber)) {
             final String cardNumber = mCardNumber.replaceAll("\\s+", "");
 
-            if (Pattern.compile(PATTERN_MASTER_CARD).matcher(cardNumber).matches()) {
+            if (Pattern.compile(CardNumberPatterns.PATTERN_MASTER_CARD).matcher(cardNumber).matches()) {
                 this.mType = MASTERCARD;
-            } else if (Pattern.compile(PATTERN_AMERICAN_EXPRESS).matcher(cardNumber).matches()) {
+            } else if (Pattern.compile(CardNumberPatterns.PATTERN_AMERICAN_EXPRESS).matcher(cardNumber).matches()) {
                 this.mType = AMERICAN_EXPRESS;
-            } else if (Pattern.compile(PATTERN_DISCOVER).matcher(cardNumber).matches()) {
+            } else if (Pattern.compile(CardNumberPatterns.PATTERN_DISCOVER).matcher(cardNumber).matches()) {
                 this.mType = DISCOVER;
             }
         }
@@ -1166,13 +1154,5 @@ public class CreditCardView extends RelativeLayout {
         set.start();
     }
 
-    @IntDef({VISA, MASTERCARD, AMERICAN_EXPRESS, DISCOVER, AUTO})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface CreditCardType {
-    }
 
-    @IntDef({ALL_DIGITS, MASKED_ALL_BUT_LAST_FOUR, ONLY_LAST_FOUR, MASKED_ALL})
-    @Retention(RetentionPolicy.SOURCE)
-    public @interface CreditCardFormat {
-    }
 }
