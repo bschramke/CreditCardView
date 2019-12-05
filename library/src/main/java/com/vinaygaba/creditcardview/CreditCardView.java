@@ -25,10 +25,10 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntDef;
-import android.support.annotation.Nullable;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.Nullable;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextUtils;
@@ -1028,30 +1028,30 @@ public class CreditCardView extends RelativeLayout {
     }
 
     private void rotateInToBackBeforeEleven() {
-        com.nineoldandroids.animation.AnimatorSet set = new com.nineoldandroids.animation.AnimatorSet();
-        final com.nineoldandroids.animation.ObjectAnimator rotateIn = com.nineoldandroids.animation.ObjectAnimator.ofFloat(this, "rotationY", 0, 90);
-        final com.nineoldandroids.animation.ObjectAnimator hideFrontView = com.nineoldandroids.animation.ObjectAnimator.ofFloat(this, "alpha", 1, 0);
+        AnimatorSet set = new AnimatorSet();
+        final ObjectAnimator rotateIn = ObjectAnimator.ofFloat(this, "rotationY", 0, 90);
+        final ObjectAnimator hideFrontView = ObjectAnimator.ofFloat(this, "alpha", 1, 0);
         rotateIn.setInterpolator(new AccelerateDecelerateInterpolator());
         rotateIn.setDuration(300);
         hideFrontView.setDuration(1);
-        set.addListener(new com.nineoldandroids.animation.Animator.AnimatorListener() {
+        set.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationEnd(Animator animation) {
                 rotateOutToBackBeforeEleven();
             }
 
             @Override
-            public void onAnimationCancel(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationCancel(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationRepeat(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
@@ -1060,30 +1060,30 @@ public class CreditCardView extends RelativeLayout {
     }
 
     private void rotateInToFrontBeforeEleven() {
-        com.nineoldandroids.animation.AnimatorSet set = new com.nineoldandroids.animation.AnimatorSet();
-        final com.nineoldandroids.animation.ObjectAnimator rotateIn = com.nineoldandroids.animation.ObjectAnimator.ofFloat(this, "rotationY", 0, 90);
-        final com.nineoldandroids.animation.ObjectAnimator hideBackView = com.nineoldandroids.animation.ObjectAnimator.ofFloat(this, "alpha", 1, 0);
+        AnimatorSet set = new AnimatorSet();
+        final ObjectAnimator rotateIn = ObjectAnimator.ofFloat(this, "rotationY", 0, 90);
+        final ObjectAnimator hideBackView = ObjectAnimator.ofFloat(this, "alpha", 1, 0);
         rotateIn.setInterpolator(new AccelerateDecelerateInterpolator());
         rotateIn.setDuration(300);
         hideBackView.setDuration(1);
-        set.addListener(new com.nineoldandroids.animation.Animator.AnimatorListener() {
+        set.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationEnd(Animator animation) {
                 rotateOutToFrontBeforeEleven();
             }
 
             @Override
-            public void onAnimationCancel(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationCancel(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationRepeat(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
@@ -1095,33 +1095,33 @@ public class CreditCardView extends RelativeLayout {
         hideFrontView();
         showBackView();
         setBackgroundResource(mCardBackBackground);
-        com.nineoldandroids.animation.AnimatorSet set = new com.nineoldandroids.animation.AnimatorSet();
-        com.nineoldandroids.animation.ObjectAnimator flip = com.nineoldandroids.animation.ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", 90, -90);
-        com.nineoldandroids.animation.ObjectAnimator rotateOut = com.nineoldandroids.animation.ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", -90, 0);
-        com.nineoldandroids.animation.ObjectAnimator showBackView = com.nineoldandroids.animation.ObjectAnimator.ofFloat(CreditCardView.this, "alpha", 0, 1);
+        AnimatorSet set = new AnimatorSet();
+        ObjectAnimator flip = ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", 90, -90);
+        ObjectAnimator rotateOut = ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", -90, 0);
+        ObjectAnimator showBackView = ObjectAnimator.ofFloat(CreditCardView.this, "alpha", 0, 1);
         flip.setDuration(0);
         showBackView.setDuration(1);
         rotateOut.setDuration(300);
         showBackView.setStartDelay(150);
         rotateOut.setInterpolator(new AccelerateDecelerateInterpolator());
-        set.addListener(new com.nineoldandroids.animation.Animator.AnimatorListener() {
+        set.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationEnd(Animator animation) {
                 cardSide = CARD_BACK;
             }
 
             @Override
-            public void onAnimationCancel(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationCancel(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationRepeat(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
@@ -1133,32 +1133,32 @@ public class CreditCardView extends RelativeLayout {
         showFrontView();
         hideBackView();
         setBackgroundResource(R.drawable.cardbackground_sky);
-        com.nineoldandroids.animation.AnimatorSet set = new com.nineoldandroids.animation.AnimatorSet();
-        com.nineoldandroids.animation.ObjectAnimator flip = com.nineoldandroids.animation.ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", 90, -90);
-        com.nineoldandroids.animation.ObjectAnimator rotateOut = com.nineoldandroids.animation.ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", -90, 0);
-        com.nineoldandroids.animation.ObjectAnimator showFrontView = com.nineoldandroids.animation.ObjectAnimator.ofFloat(CreditCardView.this, "alpha", 0, 1);
+        AnimatorSet set = new AnimatorSet();
+        ObjectAnimator flip = ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", 90, -90);
+        ObjectAnimator rotateOut = ObjectAnimator.ofFloat(CreditCardView.this, "rotationY", -90, 0);
+        ObjectAnimator showFrontView = ObjectAnimator.ofFloat(CreditCardView.this, "alpha", 0, 1);
         showFrontView.setDuration(1);
         rotateOut.setDuration(300);
         rotateOut.setInterpolator(new AccelerateDecelerateInterpolator());
         showFrontView.setStartDelay(150);
-        set.addListener(new com.nineoldandroids.animation.Animator.AnimatorListener() {
+        set.addListener(new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationStart(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationEnd(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationEnd(Animator animation) {
                 cardSide = CARD_FRONT;
             }
 
             @Override
-            public void onAnimationCancel(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationCancel(Animator animation) {
 
             }
 
             @Override
-            public void onAnimationRepeat(com.nineoldandroids.animation.Animator animation) {
+            public void onAnimationRepeat(Animator animation) {
 
             }
         });
